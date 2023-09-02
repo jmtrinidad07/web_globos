@@ -41,6 +41,12 @@ INSTALLED_APPS = [
     'nucleo',
     'tienda',
     'carrito',
+    'ordenes',
+    'crispy_forms',
+    'crispy_bootstrap4',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'carrito.procesador_contexto.carrito',
             ],
         },
     },
@@ -132,3 +139,20 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CARRITO_SESSION_ID = 'carrito'
+#crispy forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#Django authentication
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of allauth library
+    'django.contrib.auth.backends.ModelBackend',
+
+    #´allauth´ specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+
